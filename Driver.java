@@ -1,5 +1,5 @@
 import java.sql.*;
-import java.io.BufferedReader;
+import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
@@ -11,12 +11,12 @@ public class Driver {
 			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/lab4", "root", "root");
 			
 			//2. Create Tables
-			//BufferedReader br = new BufferedReader(new FileReader("Lab4.sql"));
-			//String createTables = ;
+			//Scanner createTable = new Scanner(new FileReader("Lab4.sql"));
+			//String create = ;
 			
 			//3. Insert Data
-			//BufferedReader br = new BufferedReader(new FileReader("Lab4Data.sql"));
-			//String createTables = ;
+			//Scanner insertData = new Scanner(new FileReader("Lab4Data.sql"));
+			//String insert = ;
 			
 			//MENU
 			
@@ -31,6 +31,7 @@ public class Driver {
 			}
 			
 			// Clean up
+			sc.close();
 			rs.close();
 			state.close();
 			connect.close();
