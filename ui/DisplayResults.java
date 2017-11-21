@@ -9,17 +9,67 @@ public class DisplayResults {
     }
 
     public void display(ResultSet resultSet) throws SQLException {
+        if (resultSet.next()) {
             while (resultSet.next()) {
-                System.out.print(resultSet.getString("ScheduledStartTime"));
-                System.out.print(resultSet.getString("ScheduledArrivalTime"));
-                System.out.print(resultSet.getString("DriverName"));
-                System.out.print(resultSet.getString("BusID"));
-                System.out.println();
+                System.out.print(resultSet.getString("ScheduledStartTime")+" ");
+                System.out.print(resultSet.getString("ScheduledArrivalTime")+" ");
+                System.out.print(resultSet.getString("DriverName")+" ");
+                System.out.print(resultSet.getString("BusID")+" ");
             }
+        }else{
+            System.out.println("Empty Query Result");
         }
+    }
 
     public void displayTwo(int resultSet) throws SQLException {
-        //what to display?
-        System.out.println(resultSet+"Deleted!");
+        if (resultSet == 0){
+            System.out.println("Delete Successful");
+        }else{
+            System.out.println("Unable to delete");
+        }
+    }
+
+    public void displayThree(int resultSet) throws SQLException{
+        if (resultSet == 0){
+            System.out.println("Insert Successful");
+        }else{
+            System.out.println("Unable to Insert");
+        }
+    }
+
+    public void displayFour(int resultSet) throws SQLException{
+        if (resultSet == 0){
+            System.out.println("Update Successful");
+        }else{
+            System.out.println("Unable to Update");
+        }
+    }
+
+    public void displayFive(ResultSet resultSet) throws SQLException{
+        if (resultSet.next()) {
+            while (resultSet.next()) {
+                System.out.print(resultSet.getString("TripNumber")+" ");
+                System.out.print(resultSet.getString("StopNumber")+" ");
+                System.out.print(resultSet.getString("SequenceNumber")+" ");
+                System.out.print(resultSet.getString("DrivingTime")+" ");
+                System.out.println();
+            }
+        }else{
+            System.out.println("Empty Query Result");
+        }
+    }
+
+    public void displaySix(ResultSet resultSet) throws SQLException{
+        if (resultSet.next()) {
+            while (resultSet.next()) {
+                System.out.print(resultSet.getString("DriverName")+" ");
+                System.out.print(resultSet.getString("Date")+" ");
+                System.out.println();
+            }
+        }else{
+            System.out.println("Empty Query Result");
+        }
+
     }
 }
+
