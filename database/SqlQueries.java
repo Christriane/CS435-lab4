@@ -33,27 +33,37 @@ public class SqlQueries {
         return resultSet;
     }
 
-    //query two
-    public ResultSet editSchedule(){
-        return null;
+    //query 2.a
+    public int deleteTrip(String tripNumber, String date, String scheduleStartTime) throws SQLException {
+
+        //build query string
+        String sql = "DELETE FROM TripOffering\n" +
+                "WHERE TripNumber = ? AND Date = ? AND ScheduledStartTime = ?";
+
+        //add user input to string
+        PreparedStatement myStmt = connection.prepareStatement(sql);
+        myStmt.setString(1, tripNumber);
+        myStmt.setString(2, date);
+        myStmt.setString(3, scheduleStartTime);
+
+        //execute query
+        int resultSet = myStmt.executeUpdate();
+
+        //return query results
+        return resultSet;
     }
 
-    //query three
-    public ResultSet deleteTrip(){
-        return null;
-    }
-
-    //query four
+    //query 2.b
     public ResultSet addTrip(){
         return null;
     }
 
-    //query five
+    //query 2.c
     public ResultSet changeDriver(){
         return null;
     }
 
-    //query six
+    //query 2.d
     public ResultSet changeBus(){
         return null;
     }

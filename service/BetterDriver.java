@@ -34,6 +34,9 @@ public class BetterDriver {
         SqlQueries sqlQueries = new SqlQueries(connection);
 
         //query one
-        displayResults.display(sqlQueries.displaySchedule("Pomona", "Walnut", "1-1-2001"));
+        //displayResults.display(sqlQueries.displaySchedule("Pomona", "Walnut", "1-1-2001"));
+
+        //query Two
+        displayResults.displayTwo(sqlQueries.deleteTrip("Trip1","1-1-2001","MON 10:00AM"));
     }
 }

@@ -10,10 +10,16 @@ public class DisplayResults {
 
     public void display(ResultSet resultSet) throws SQLException {
             while (resultSet.next()) {
-                System.out.println(resultSet.getString("ScheduledStartTime"));
-                System.out.println(resultSet.getString("ScheduledArrivalTime"));
-                System.out.println(resultSet.getString("DriverName"));
-                System.out.println(resultSet.getString("BusID"));
+                System.out.print(resultSet.getString("ScheduledStartTime"));
+                System.out.print(resultSet.getString("ScheduledArrivalTime"));
+                System.out.print(resultSet.getString("DriverName"));
+                System.out.print(resultSet.getString("BusID"));
+                System.out.println();
             }
         }
+
+    public void displayTwo(int resultSet) throws SQLException {
+        //what to display?
+        System.out.println(resultSet+"Deleted!");
+    }
 }
