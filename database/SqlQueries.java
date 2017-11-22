@@ -147,6 +147,7 @@ public class SqlQueries {
 
     }
 
+    //query 5
     public int addDriver(String driverName, String driverTelephoneNumber) throws SQLException {
         String sql = "INSERT INTO Driver (DriverName, DriverTelephoneNumber)\n" +
                 "VALUES\n" +
@@ -162,6 +163,7 @@ public class SqlQueries {
         return resultSet;
     }
 
+    //query 6
     public int addBus(String busID, String busModel, String year) throws SQLException {
         String sql = "INSERT INTO Bus (BusID, Model, Year)\n" +
                 "VALUES\n" +
@@ -179,6 +181,7 @@ public class SqlQueries {
         return resultSet;
     }
 
+    //query 7
     public int deleteBus(String busID) throws SQLException {
         String sql = "DELETE FROM Bus\n" +
                 "WHERE BusID = ?;";
@@ -191,6 +194,7 @@ public class SqlQueries {
         return resultSet;
     }
 
+    //query 8
     public int addActualTrip(String tripNumber,String date,String scheduledStartTime,String stopNumber,String scheduledArrivalTime,String actualStartTime,String actualArrivalTime,String numberOfPassengerIn,String numberOfPassengerOut) throws SQLException {
         String sql = "INSERT INTO ActualTripStopInfo (TripNumber, Date, ScheduledStartTime, StopNumber, ScheduledArrivalTime, ActualStartTime, ActualArrivalTime, NumberOfPassengerIn, NumberOfPassengerOut)\n" +
                 "VALUES\n" +

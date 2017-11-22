@@ -22,7 +22,7 @@ public class DisplayResults {
     }
 
     public void displayTwo(int resultSet) throws SQLException {
-        if (resultSet == 0){
+        if (resultSet > 0){
             System.out.println("Delete Successful");
         }else{
             System.out.println("Unable to delete");
@@ -30,7 +30,7 @@ public class DisplayResults {
     }
 
     public void displayThree(int resultSet) throws SQLException{
-        if (resultSet == 0){
+        if (resultSet > 0){
             System.out.println("Insert Successful");
         }else{
             System.out.println("Unable to Insert");
@@ -38,7 +38,7 @@ public class DisplayResults {
     }
 
     public void displayFour(int resultSet) throws SQLException{
-        if (resultSet == 0){
+        if (resultSet > 0){
             System.out.println("Update Successful");
         }else{
             System.out.println("Unable to Update");

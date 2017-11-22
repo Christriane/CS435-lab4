@@ -22,13 +22,13 @@ public class BetterDriver {
         mySQLConnection.startConnection();
         Connection connection = mySQLConnection.getConnection();
 
-//        //create tables - only run once
-//        //add checks later
-//        mySQLConnection.createTables();
-//
-//        //populate tables - only run once
-//        //add checks later
-//        mySQLConnection.insertDataIntoTables();
+        //create tables - only run once
+        //add checks later
+        //mySQLConnection.createTables();
+
+        //populate tables - only run once
+        //add checks later
+        //mySQLConnection.insertDataIntoTables();
 
         //run queries
         SqlQueries sqlQueries = new SqlQueries(connection);
@@ -37,7 +37,8 @@ public class BetterDriver {
         // displayResults.display(sqlQueries.displaySchedule("Pomona", "Walnut", "1-1-2001"));
 
         // query 2.a
-        //displayResults.displayTwo(sqlQueries.deleteTrip("Trip1","1-1-2001","MON 10:00AM"));
+        System.out.println("Query 2 Results");
+        displayResults.displayTwo(sqlQueries.deleteTrip("Trip1","1-1-2001","MON 10:00AM"));
 
         //query 2.b
         //Can't add due to foreign key constraint
@@ -59,19 +60,22 @@ public class BetterDriver {
         //displayResults.displaySix(sqlQueries.displayWeeklySchedule("Driver7","1-7-2001"));
 
         //query 5
+        System.out.println("Query 5 Results");
         //says can't insert but still works, status code flipped? use execute to check with boolean instead..
-        //displayResults.displayThree(sqlQueries.addDriver("jam","909-999-8888"));
+        displayResults.displayThree(sqlQueries.addDriver("jamz","909-999-8888"));
 
         //query 6
+        System.out.println("Query 6 Results");
         //says can't insert but still works, status code flipped? use execute to check with boolean instead..
-        //displayResults.displayThree((sqlQueries.addBus("Bus999","Tesla","2020")));
+        displayResults.displayThree((sqlQueries.addBus("Bus9999","Tesla","2020")));
 
         //query 7
+        System.out.println("Query 7 Results");
         //says can't insert but still works, status code flipped? use execute to check with boolean instead..
-        //displayResults.displayTwo(sqlQueries.deleteBus("Bus999"));
+        displayResults.displayTwo(sqlQueries.deleteBus("Bus999"));
 
         //query 8
         //Can't change due to foreign key constraint
-        displayResults.displayThree(sqlQueries.addActualTrip("1","1","1","1","1","1","1", "1", "1"));
+        //displayResults.displayThree(sqlQueries.addActualTrip("1","1","1","1","1","1","1", "1", "1"));
     }
 }
