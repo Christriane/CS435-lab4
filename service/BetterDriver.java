@@ -5,24 +5,23 @@ import database.MySQLCreateTable;
 import database.MySQLPopulateTable;
 import database.SqlQueries;
 import ui.DisplayResults;
+import ui.TerminalMenu;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class BetterDriver {
 
-    private static DisplayResults displayResults;
+    private static TerminalMenu terminalMenu;
     private static MySQLConnection mySQLConnection;
+    private static Connection connection;
 
     public static void main(String[] args) throws SQLException {
-
-        //initialize ui
-        displayResults = new DisplayResults();
-
 
         //start a connection to database
         MySQLConnection mySQLConnection = MySQLConnection.getInstance();
         mySQLConnection.startConnection();
-        Connection connection = mySQLConnection.getConnection();
+        connection = mySQLConnection.getConnection();
 
         //create tables - only run once
         //add checks later
@@ -34,53 +33,8 @@ public class BetterDriver {
         //MySQLPopulateTable mySQLPopulateTable = new MySQLPopulateTable(connection);
         //mySQLPopulateTable.populateTables();
 
-        //run queries
-        SqlQueries sqlQueries = new SqlQueries(connection);
-
-        // query 1
-        System.out.println("Query 1 Results");
-        displayResults.display(sqlQueries.displaySchedule("Pomona", "Walnut", "1-1-2001"));
-
-        // query 2.a
-        System.out.println("Query 2 Results");
-        displayResults.displayTwo(sqlQueries.deleteTrip("Trip1","1-1-2001","MON 10:00AM"));
-
-        //query 2.b
-        //Can't add due to foreign key constraint
-        //displayResults.displayThree(sqlQueries.addTrip("Trip100","11-21-2017","MON 10:55AM","MON 12:00PM","Bob","Bus100"));
-
-        //query 2.c
-        //Can't add due to foreign key constraint
-        //displayResults.displayFour(sqlQueries.changeDriver("Liouse","Trip10","1-10-2001","SUN 10:00AM"));
-
-        //query 2.d
-        //Can't change due to foreign key constraint
-        //displayResults.displayFour(sqlQueries.changeBus("CoolBus8","Trip8","1-8-2001","SAT 10:00AM"));
-
-        //query 3
-        //displayResults.displayFive(sqlQueries.displayStops());
-
-        //query 4
-        //weird output???
-        //displayResults.displaySix(sqlQueries.displayWeeklySchedule("Driver7","1-7-2001"));
-
-        //query 5
-        //System.out.println("Query 5 Results");
-        //says can't insert but still works, status code flipped? use execute to check with boolean instead..
-        //displayResults.displayThree(sqlQueries.addDriver("jamz","909-999-8888"));
-
-        //query 6
-        //System.out.println("Query 6 Results");
-        //says can't insert but still works, status code flipped? use execute to check with boolean instead..
-        //displayResults.displayThree((sqlQueries.addBus("Bus9999","Tesla","2020")));
-
-        //query 7
-        //System.out.println("Query 7 Results");
-        //says can't insert but still works, status code flipped? use execute to check with boolean instead..
-        //displayResults.displayTwo(sqlQueries.deleteBus("Bus999"));
-
-        //query 8
-        //Can't change due to foreign key constraint
-        //displayResults.displayThree(sqlQueries.addActualTrip("1","1","1","1","1","1","1", "1", "1"));
+        //initialize ui
+        terminalMenu = new TerminalMenu(connection);
+        terminalMenu.menu();
     }
 }
