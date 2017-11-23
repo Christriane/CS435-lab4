@@ -23,15 +23,15 @@ public class BetterDriver {
         mySQLConnection.startConnection();
         connection = mySQLConnection.getConnection();
 
-        //create tables - only run once
-        //add checks later
-        //MySQLCreateTable mySQLCreateTable = new MySQLCreateTable(connection);
-        //mySQLCreateTable.createTables();
-
-        //populate tables - only run once
-        //add checks later
-        //MySQLPopulateTable mySQLPopulateTable = new MySQLPopulateTable(connection);
-        //mySQLPopulateTable.populateTables();
+//        //create tables - only run once
+//        //add checks later
+//        MySQLCreateTable mySQLCreateTable = new MySQLCreateTable(connection);
+//        mySQLCreateTable.createTables();
+//
+//        //populate tables - only run once
+//        //add checks later
+//        MySQLPopulateTable mySQLPopulateTable = new MySQLPopulateTable(connection);
+//        mySQLPopulateTable.populateTables();
 
         //initialize ui
         terminalMenu = new TerminalMenu(connection);

@@ -86,6 +86,14 @@ public class MySQLCreateTable implements CreateTable {
                 ");";
 
         statement = connection.createStatement();
+//        statement.executeUpdate(bus);
+//        statement.executeUpdate(driver);
+//        statement.executeUpdate(tripOffering);
+//        statement.executeUpdate(trip);
+//        statement.executeUpdate(stop);
+//        statement.executeUpdate(actualTripStopInfo);
+//        statement.executeUpdate(tripStopInfo);
+
         statement.executeUpdate(bus);
         statement.executeUpdate(driver);
         statement.executeUpdate(tripOffering);

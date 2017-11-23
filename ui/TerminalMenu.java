@@ -50,6 +50,7 @@ public class TerminalMenu {
         }
     }
 
+    //probably should create methods for each query since we need user input
     private void runChoice() throws SQLException {
         switch (this.choice) {
             case "1":
@@ -63,17 +64,14 @@ public class TerminalMenu {
                 break;
             case "3":
                 //query 2.b
-                //Can't add due to foreign key constraint
-                displayResults.displayThree(sqlQueries.addTrip("Trip100","11-21-2017","MON 10:55AM","MON 12:00PM","Bob","Bus100"));  break;
+                displayResults.displayThree(sqlQueries.addTrip("Trip1","11-21-2017","MON 10:55AM","MON 12:00PM","Driver1","Bus2"));  break;
             case "4":
                 //query 2.c
-                //Can't add due to foreign key constraint
-                displayResults.displayFour(sqlQueries.changeDriver("Liouse","Trip10","1-10-2001","SUN 10:00AM"));
+                displayResults.displayFour(sqlQueries.changeDriver("Driver1","Trip10","1-10-2001","SUN 10:00AM"));
                 break;
             case "5":
                 //query 2.d
-                //Can't change due to foreign key constraint
-                displayResults.displayFour(sqlQueries.changeBus("CoolBus8","Trip8","1-8-2001","SAT 10:00AM"));
+                displayResults.displayFour(sqlQueries.changeBus("Bus10","Trip9","11-9-2001","SUN 10:00AM"));
                 break;
             case "6":
                 //query 3
@@ -81,7 +79,6 @@ public class TerminalMenu {
                 break;
             case "7":
                 //query 4
-                //weird output???
                 displayResults.displaySix(sqlQueries.displayWeeklySchedule("Driver7","1-7-2001"));
                 break;
             case "8":
@@ -102,7 +99,7 @@ public class TerminalMenu {
             case "11":
                 //query 8
                 // Can't change due to foreign key constraint
-                displayResults.displayThree(sqlQueries.addActualTrip("1","1","1","1","1","1","1", "1", "1"));
+                displayResults.displayThree(sqlQueries.addActualTrip("Trip2","1-2-2001","TUE 10:00AM","Stop1","TUE 2:45PM","1","1", "1", "1"));
                 break;
             case "12":
                 System.exit(0);

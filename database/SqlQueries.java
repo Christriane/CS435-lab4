@@ -105,7 +105,7 @@ public class SqlQueries {
     public int changeBus(String busID, String tripNumber, String date, String scheduledStartTime) throws SQLException {
         //build query string
         String sql = "UPDATE TripOffering\n" +
-                "SET TO.BusID = ?\n" +
+                "SET BusID = ?\n" +
                 "WHERE TripNumber = ? AND Date = ? AND ScheduledStartTime = ?;";
 
 
