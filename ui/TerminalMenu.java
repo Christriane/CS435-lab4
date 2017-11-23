@@ -112,7 +112,6 @@ public class TerminalMenu {
         System.out.println("Query 2 Results");
         displayResults.displayTwo(sqlQueries.deleteTrip("Trip1","1-1-2001","MON 10:00AM"));
 
-
     }
     private void queryThree() throws SQLException {
         //query 2.b
@@ -159,10 +158,7 @@ public class TerminalMenu {
     }
     private void queryEleven() throws SQLException {
         //query 8
-        // Can't change due to foreign key constraint
         displayResults.displayThree(sqlQueries.addActualTrip("Trip2","1-2-2001","TUE 10:00AM","Stop1","TUE 2:45PM","1","1", "1", "1"));
 
     }
-
-
 }

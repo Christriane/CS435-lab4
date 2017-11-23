@@ -1,12 +1,7 @@
 package service;
 
 import database.MySQLConnection;
-import database.MySQLCreateTable;
-import database.MySQLPopulateTable;
-import database.SqlQueries;
-import ui.DisplayResults;
 import ui.TerminalMenu;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
