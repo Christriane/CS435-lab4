@@ -102,16 +102,43 @@ public class TerminalMenu {
 
     private void queryOne() throws SQLException {
         // query 1
-        System.out.println("Query 1 Results");
-        displayResults.display(sqlQueries.displaySchedule("Pomona", "Walnut", "1-1-2001"));
+        System.out.println("Enter Start Location Name: ");
+		String startLocationName = scanner.next();
+		scanner.nextLine();
 
+		System.out.println("Enter Destination Name: ");
+		String destinationName = scanner.next();
+		scanner.nextLine();
+		
+		System.out.println("Enter Date: ");
+		String date = scanner.next();
+		scanner.nextLine();
+		
+		System.out.println("Query 1 Results");
+        displayResults.display(sqlQueries.displaySchedule(startLocationName, destinationName, date));
+        //Pomona, Walnut, 1-1-2001
     }
 
     private void queryTwo() throws SQLException {
         // query 2.a
-        System.out.println("Query 2 Results");
-        displayResults.displayTwo(sqlQueries.deleteTrip("Trip1","1-1-2001","MON 10:00AM"));
+        System.out.println("Enter Trip Number: ");
+		String tripNum = scanner.next();
+		tripNum=tripNum.trim();
+		scanner.nextLine();
+		
+		System.out.println("Enter Date: ");
+		String date = scanner.next();
+		date=date.trim();
+		scanner.nextLine();
 
+		System.out.println("Enter Start Time: ");
+		String startTime = scanner.next();
+		startTime=startTime.trim();
+		scanner.nextLine();
+    	
+        System.out.println("Query 2 Results");
+        displayResults.displayTwo(sqlQueries.deleteTrip(tripNum, date, startTime));
+        //Trip1, 1-1-2001, MON 10:00AM
     }
     private void queryThree() throws SQLException {
         //query 2.b

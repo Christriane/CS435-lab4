@@ -9,14 +9,13 @@ public class DisplayResults {
     }
 
     public void display(ResultSet resultSet) throws SQLException {
-        if (resultSet.next()) {
-            while (resultSet.next()) {
-                System.out.print(resultSet.getString("ScheduledStartTime")+" ");
-                System.out.print(resultSet.getString("ScheduledArrivalTime")+" ");
-                System.out.print(resultSet.getString("DriverName")+" ");
-                System.out.print(resultSet.getString("BusID")+" ");
-            }
-        }else{
+    		if (resultSet.next()) {
+            System.out.print(resultSet.getString("ScheduledStartTime")+" ");
+            System.out.print(resultSet.getString("ScheduledArrivalTime")+" ");
+            System.out.print(resultSet.getString("DriverName")+" ");
+            System.out.print(resultSet.getString("BusID")+"\n");
+            
+        } else{
             System.out.println("Empty Query Result");
         }
     }

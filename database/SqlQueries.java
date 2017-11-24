@@ -14,7 +14,7 @@ public class SqlQueries {
 
     //query one
     public ResultSet displaySchedule(String startLocationName, String destinationName, String date) throws SQLException {
-
+    	
         //build query string
         String sql = "SELECT T2.ScheduledStartTime, T2.ScheduledArrivalTime, T2.DriverName, T2.BusID " +
                 "FROM TripOffering T2, Trip T " +
@@ -48,7 +48,7 @@ public class SqlQueries {
 
         //execute query
         int resultSet = completeQuery.executeUpdate();
-
+        System.out.println("Result set is: " + resultSet);
         //return query results
         return resultSet;
     }

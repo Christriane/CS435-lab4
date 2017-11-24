@@ -64,13 +64,39 @@ public class Driver {
 			ResultSet myRs = myStmt.executeQuery();
 
 			while (myRs.next()) {
-				System.out.println(myRs.getString("ScheduledStartTime"));
-				System.out.println(myRs.getString("ScheduledArrivalTime"));
-				System.out.println(myRs.getString("DriverName"));
-				System.out.println(myRs.getString("BusID"));
+				System.out.print(myRs.getString("ScheduledStartTime") + " ");
+				System.out.print(myRs.getString("ScheduledArrivalTime") + " ");
+				System.out.print(myRs.getString("DriverName") + " ");
+				System.out.print(myRs.getString("BusID") + " ");
 			}
 
+			System.out.println("2. Delete from Trip Offering.");
+			System.out.println("Enter Trip Number: ");
+			String tripNum = kb.nextLine();
+			tripNum = tripNum.trim();
 
+			System.out.println("Enter Date: ");
+			date = kb.nextLine();
+			destinationName =date.trim();
+
+			System.out.println("Enter ScheduledStartTime: ");
+			String startTime = kb.nextLine();
+			startTime = startTime.trim();
+			
+			String sql2 = "DELETE FROM TripOffering " +
+					"WHERE TripNumber = ? AND  Date = ? AND ScheduledStartTime = ?";
+			PreparedStatement myStmt2 = connect.prepareStatement(sql2);
+			myStmt2.setString(1, tripNum);
+			myStmt2.setString(2, date);
+			myStmt2.setString(3, startTime);
+
+			int myRs2 = myStmt2.executeUpdate();
+			
+			if(myRs2 > 0)
+				System.out.println("Delete success.");
+			else
+				System.out.println("Delete failed.");
+			
 			//Clean up
 			//createTable.close();
 			//insertData.close();
