@@ -9,6 +9,7 @@ public class DisplayResults {
     }
 
     public void display(ResultSet resultSet) throws SQLException {
+
     		if (resultSet.next()) {
             System.out.print(resultSet.getString("ScheduledStartTime")+" ");
             System.out.print(resultSet.getString("ScheduledArrivalTime")+" ");

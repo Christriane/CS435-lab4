@@ -44,9 +44,8 @@ public class TerminalMenu {
             System.out.println("----------------------");
 
             System.out.println("Choice?");
-            choice = scanner.next();
+            choice = scanner.nextLine();
             runChoice();
-            System.out.println("");
         }
     }
 
@@ -103,42 +102,40 @@ public class TerminalMenu {
     private void queryOne() throws SQLException {
         // query 1
         System.out.println("Enter Start Location Name: ");
-		String startLocationName = scanner.next();
-		scanner.nextLine();
+        String startLocationName = scanner.nextLine();
+        startLocationName = startLocationName.trim();
 
-		System.out.println("Enter Destination Name: ");
-		String destinationName = scanner.next();
-		scanner.nextLine();
-		
-		System.out.println("Enter Date: ");
-		String date = scanner.next();
-		scanner.nextLine();
+        System.out.println("Enter Destination Name: ");
+        String destinationName = scanner.nextLine();
+        destinationName = destinationName.trim();
+
+        System.out.println("Enter Date: ");
+        String date = scanner.nextLine();
+        date = date.trim();
 		
 		System.out.println("Query 1 Results");
         displayResults.display(sqlQueries.displaySchedule(startLocationName, destinationName, date));
-        //Pomona, Walnut, 1-1-2001
+        System.out.println();
     }
 
     private void queryTwo() throws SQLException {
         // query 2.a
         System.out.println("Enter Trip Number: ");
-		String tripNum = scanner.next();
-		tripNum=tripNum.trim();
-		scanner.nextLine();
-		
+		String tripNum = scanner.nextLine();
+		tripNum = tripNum.trim();
+
 		System.out.println("Enter Date: ");
-		String date = scanner.next();
+		String date = scanner.nextLine();
 		date=date.trim();
-		scanner.nextLine();
 
 		System.out.println("Enter Start Time: ");
-		String startTime = scanner.next();
-		startTime=startTime.trim();
-		scanner.nextLine();
-    	
+		String startTime = scanner.nextLine();
+		startTime = startTime.trim();
+
         System.out.println("Query 2 Results");
         displayResults.displayTwo(sqlQueries.deleteTrip(tripNum, date, startTime));
-        //Trip1, 1-1-2001, MON 10:00AM
+        System.out.println();
+
     }
     private void queryThree() throws SQLException {
         //query 2.b
