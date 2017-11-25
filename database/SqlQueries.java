@@ -28,7 +28,7 @@ public class SqlQueries {
 
         //execute query
         ResultSet resultSet = completeQuery.executeQuery();
-
+        
         //return query results
         return resultSet;
     }
@@ -48,7 +48,24 @@ public class SqlQueries {
 
         //execute query
         int resultSet = completeQuery.executeUpdate();
-        System.out.println("Result set is: " + resultSet);
+        
+        if(resultSet > 0) {
+	        sql = "SELECT * FROM TripOffering";
+	        completeQuery = connection.prepareStatement(sql);
+	        ResultSet rs = completeQuery.executeQuery();
+	        
+	        System.out.println("Current Trip Offerings after deletion: ");
+	        while(rs.next()) {
+	        		System.out.print(rs.getString("TripNumber") + " ");
+	        		System.out.print(rs.getString("Date") + " ");
+	        		System.out.print(rs.getString("ScheduledStartTime") + " ");
+	        		System.out.print(rs.getString("ScheduledArrivalTime") + " ");
+	        		System.out.print(rs.getString("DriverName") + " ");
+	        		System.out.print(rs.getString("BusID") + "\n");
+	        
+	        }
+    		}
+        
         //return query results
         return resultSet;
     }
@@ -72,6 +89,21 @@ public class SqlQueries {
 
         //execute query
         int resultSet = completeQuery.executeUpdate();
+        
+        sql = "SELECT * FROM TripOffering";
+        completeQuery = connection.prepareStatement(sql);
+        ResultSet rs = completeQuery.executeQuery();
+        
+        System.out.println("Current Trip Offerings after insertion: ");
+        while(rs.next()) {
+        		System.out.print(rs.getString("TripNumber") + " ");
+        		System.out.print(rs.getString("Date") + " ");
+        		System.out.print(rs.getString("ScheduledStartTime") + " ");
+        		System.out.print(rs.getString("ScheduledArrivalTime") + " ");
+        		System.out.print(rs.getString("DriverName") + " ");
+        		System.out.print(rs.getString("BusID") + "\n");
+        
+        }
 
         //return query results
         return resultSet;
@@ -96,6 +128,22 @@ public class SqlQueries {
         //execute query
         int resultSet = completeQuery.executeUpdate();
 
+        if(resultSet > 0) {
+	        sql = "SELECT * FROM TripOffering";
+	        completeQuery = connection.prepareStatement(sql);
+	        ResultSet rs = completeQuery.executeQuery();
+	        
+	        System.out.println("Current Trip Offerings after driver update: ");
+	        while(rs.next()) {
+	        		System.out.print(rs.getString("TripNumber") + " ");
+	        		System.out.print(rs.getString("Date") + " ");
+	        		System.out.print(rs.getString("ScheduledStartTime") + " ");
+	        		System.out.print(rs.getString("ScheduledArrivalTime") + " ");
+	        		System.out.print(rs.getString("DriverName") + " ");
+	        		System.out.print(rs.getString("BusID") + "\n");
+	        }
+    		}
+        
         //return query results
         return resultSet;
 
@@ -108,7 +156,6 @@ public class SqlQueries {
                 "SET BusID = ?\n" +
                 "WHERE TripNumber = ? AND Date = ? AND ScheduledStartTime = ?;";
 
-
         //add user input to string
         PreparedStatement completeQuery = connection.prepareStatement(sql);
         completeQuery.setString(1, busID);
@@ -117,6 +164,23 @@ public class SqlQueries {
         completeQuery.setString(4, scheduledStartTime);
 
         int resultSet = completeQuery.executeUpdate();
+        
+        if(resultSet > 0) {
+	        sql = "SELECT * FROM TripOffering";
+	        completeQuery = connection.prepareStatement(sql);
+	        ResultSet rs = completeQuery.executeQuery();
+	        
+	        System.out.println("Current Trip Offerings after bus update: ");
+	        while(rs.next()) {
+	        		System.out.print(rs.getString("TripNumber") + " ");
+	        		System.out.print(rs.getString("Date") + " ");
+	        		System.out.print(rs.getString("ScheduledStartTime") + " ");
+	        		System.out.print(rs.getString("ScheduledArrivalTime") + " ");
+	        		System.out.print(rs.getString("DriverName") + " ");
+	        		System.out.print(rs.getString("BusID") + "\n");
+	        }
+    		}
+        
         return resultSet;
     }
 
@@ -135,7 +199,7 @@ public class SqlQueries {
     public ResultSet displayWeeklySchedule(String driverName, String date) throws SQLException{
         String sql = "SELECT T2.TripNumber, T2.Date, T2.ScheduledStartTime, T2.ScheduledArrivalTime, T2.DriverName, T2.BusID\n" +
                 "FROM Driver D, TripOffering T2\n" +
-                "WHERE T2.DriverName = ? AND T2.Date = ?;";
+                "WHERE D.DriverName = T2.DriverName AND T2.DriverName = ? AND T2.Date = ?;";
 
         //add user input to string
         PreparedStatement completeQuery = connection.prepareStatement(sql);
@@ -152,14 +216,26 @@ public class SqlQueries {
         String sql = "INSERT INTO Driver (DriverName, DriverTelephoneNumber)\n" +
                 "VALUES\n" +
                 "\t(?, ?);\n";
-
-
+        
         //add user input to string
         PreparedStatement completeQuery = connection.prepareStatement(sql);
         completeQuery.setString(1, driverName);
         completeQuery.setString(2, driverTelephoneNumber);
 
         int resultSet = completeQuery.executeUpdate();
+        
+        if(resultSet > 0) {
+	        sql = "SELECT * FROM Driver";
+	        completeQuery = connection.prepareStatement(sql);
+	        ResultSet rs = completeQuery.executeQuery();
+	        
+	        System.out.println("Current Drivers after driver update: ");
+	        while(rs.next()) {
+	        		System.out.print(rs.getString("DriverName") + " ");
+	        		System.out.print(rs.getString("DriverTelephoneNumber") + "\n");
+	        }
+    		}
+        
         return resultSet;
     }
 
@@ -169,15 +245,27 @@ public class SqlQueries {
                 "VALUES\n" +
                 "\t(?, ?, ?);";
 
-
         //add user input to string
         PreparedStatement completeQuery = connection.prepareStatement(sql);
         completeQuery.setString(1, busID);
         completeQuery.setString(2, busModel);
         completeQuery.setString(3, year);
 
-
         int resultSet = completeQuery.executeUpdate();
+        
+        if(resultSet > 0) {
+	        sql = "SELECT * FROM Bus";
+	        completeQuery = connection.prepareStatement(sql);
+	        ResultSet rs = completeQuery.executeQuery();
+	        
+	        System.out.println("Current bus info after bus insert: ");
+	        while(rs.next()) {
+	        		System.out.print(rs.getString("BusID") + " ");
+	        		System.out.print(rs.getString("Model") + " ");
+	        		System.out.print(rs.getString("Year") + "\n");
+	        }
+    		}
+        
         return resultSet;
     }
 
@@ -191,6 +279,20 @@ public class SqlQueries {
         completeQuery.setString(1, busID);
 
         int resultSet = completeQuery.executeUpdate();
+        
+        if(resultSet > 0) {
+	        sql = "SELECT * FROM Bus";
+	        completeQuery = connection.prepareStatement(sql);
+	        ResultSet rs = completeQuery.executeQuery();
+	        
+	        System.out.println("Current Bus info after bus update: ");
+	        while(rs.next()) {
+	        		System.out.print(rs.getString("BusID") + " ");
+	        		System.out.print(rs.getString("Model") + " ");
+	        		System.out.print(rs.getString("Year") + "\n");
+	        }
+    		}
+        
         return resultSet;
     }
 
@@ -213,6 +315,26 @@ public class SqlQueries {
         completeQuery.setString(9, numberOfPassengerOut);
 
         int resultSet = completeQuery.executeUpdate();
+        
+        if(resultSet > 0) {
+	        sql = "SELECT * FROM Bus";
+	        completeQuery = connection.prepareStatement(sql);
+	        ResultSet rs = completeQuery.executeQuery();
+	        
+	        System.out.println("Current Actual Trip Stop Info after update: ");
+	        while(rs.next()) {
+	        		System.out.print(rs.getString("TripNumber") + " ");
+	        		System.out.print(rs.getString("Date") + " ");
+	        		System.out.print(rs.getString("ScheduledStartTime") + " ");
+	        		System.out.print(rs.getString("StopNumber") + " ");
+	        		System.out.print(rs.getString("ScheduledArrivalTime") + " ");
+	        		System.out.print(rs.getString("ActualStartTime") + " ");
+	        		System.out.print(rs.getString("ActualArrivalTime") + " ");
+	        		System.out.print(rs.getString("NumberOfPassengerIn") + " ");
+	        		System.out.print(rs.getString("NumberOfPassengerOut") + "\n");
+	        }
+    		}
+        
         return resultSet;
     }
 }

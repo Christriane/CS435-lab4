@@ -15,13 +15,11 @@ public class TerminalMenu {
 
     private String choice;
 
-    public TerminalMenu(Connection connection){
+    public TerminalMenu(Connection connection) {
         this.connection = connection;
         scanner = new Scanner(System.in);
         displayResults = new DisplayResults();
         sqlQueries = new SqlQueries(this.connection);
-
-
     }
 
     public void menu() throws SQLException {
@@ -103,86 +101,197 @@ public class TerminalMenu {
         // query 1
         System.out.println("Enter Start Location Name: ");
         String startLocationName = scanner.nextLine();
-        startLocationName = startLocationName.trim();
 
         System.out.println("Enter Destination Name: ");
         String destinationName = scanner.nextLine();
-        destinationName = destinationName.trim();
 
         System.out.println("Enter Date: ");
         String date = scanner.nextLine();
-        date = date.trim();
 		
-		System.out.println("Query 1 Results");
+		System.out.println("*** Query 1 Results ***");
         displayResults.display(sqlQueries.displaySchedule(startLocationName, destinationName, date));
         System.out.println();
+        //Pomona, Walnut, 1-1-2001
     }
 
     private void queryTwo() throws SQLException {
         // query 2.a
         System.out.println("Enter Trip Number: ");
 		String tripNum = scanner.nextLine();
-		tripNum = tripNum.trim();
 
 		System.out.println("Enter Date: ");
 		String date = scanner.nextLine();
-		date=date.trim();
 
 		System.out.println("Enter Start Time: ");
 		String startTime = scanner.nextLine();
-		startTime = startTime.trim();
 
-        System.out.println("Query 2 Results");
+        System.out.println("*** Query 2a Results ***");
         displayResults.displayTwo(sqlQueries.deleteTrip(tripNum, date, startTime));
         System.out.println();
-
+        //Trip1, 1-1-2001, MON 10:00AM
     }
+    
     private void queryThree() throws SQLException {
         //query 2.b
-        displayResults.displayThree(sqlQueries.addTrip("Trip1","11-21-2017","MON 10:55AM","MON 12:00PM","Driver1","Bus2"));
+    		System.out.println("Enter Trip Number: ");
+		String tripNum = scanner.nextLine();
 
+		System.out.println("Enter Date: ");
+		String date = scanner.nextLine();
+
+		System.out.println("Enter Scheduled Start Time: ");
+		String startTime = scanner.nextLine();
+		
+		System.out.println("Enter Scheduled Arrival Time: ");
+		String arrivalTime = scanner.nextLine();
+		
+		System.out.println("Enter Driver Name: ");
+		String driverName = scanner.nextLine();
+		
+		System.out.println("Enter BusID: ");
+		String busID = scanner.nextLine();
+    	
+		System.out.println("*** Query 2b Results ***");
+        displayResults.displayThree(sqlQueries.addTrip(tripNum, date, startTime, arrivalTime, driverName, busID));
+        System.out.println();
+        //Trip1, 11-21-2017, MON 10:55AM, MON 12:00PM, Driver1, Bus2
     }
+    
     private void queryFour() throws SQLException {
         //query 2.c
-        displayResults.displayFour(sqlQueries.changeDriver("Driver1","Trip10","1-10-2001","SUN 10:00AM"));
+    		System.out.println("Enter Driver Name: ");
+		String driverName = scanner.nextLine();
 
+		System.out.println("Enter Trip Number: ");
+		String tripNum = scanner.nextLine();
+
+		System.out.println("Enter Date: ");
+		String date = scanner.nextLine();
+		
+		System.out.println("Enter Scheduled Start Time: ");
+		String startTime = scanner.nextLine();
+    	
+    		System.out.println("*** Query 2c Results ***");
+        displayResults.displayFour(sqlQueries.changeDriver(driverName, tripNum, date, startTime));
+        System.out.println();
+        //Driver1, Trip10, 1-10-2001, SUN 10:00AM
     }
+    
     private void queryFive() throws SQLException {
         //query 2.d
-        displayResults.displayFour(sqlQueries.changeBus("Bus10","Trip9","11-9-2001","SUN 10:00AM"));
+    		System.out.println("Enter Bus ID: ");
+		String driverName = scanner.nextLine();
 
+		System.out.println("Enter Trip Number: ");
+		String tripNum = scanner.nextLine();
+
+		System.out.println("Enter Date: ");
+		String date = scanner.nextLine();
+		
+		System.out.println("Enter Scheduled Start Time: ");
+		String startTime = scanner.nextLine();
+    	
+    		System.out.println("*** Query 2d Results ***");
+        displayResults.displayFour(sqlQueries.changeBus(driverName, tripNum, date, startTime));
+        System.out.println();
+        //Bus10, Trip9, 1-9-2001, SUN 10:00AM
     }
+    
     private void querySix() throws SQLException {
         //query 3
+    		System.out.println("*** Query 3 Results ***");
         displayResults.displayFive(sqlQueries.displayStops());
-
+        System.out.println();
     }
+    
     private void querySeven() throws SQLException {
         //query 4
-        displayResults.displaySix(sqlQueries.displayWeeklySchedule("Driver7","1-7-2001"));
-
+    		System.out.println("Enter Driver Name: ");
+		String driverName = scanner.nextLine();
+		
+		System.out.println("Enter Date: ");
+		String date = scanner.nextLine();
+    	
+    		System.out.println("*** Query 4 Results ***");
+        displayResults.displaySix(sqlQueries.displayWeeklySchedule(driverName, date));
+        System.out.println();
+        //Driver7, 1-7-2001
     }
+    
     private void queryEight() throws SQLException {
         //query 5
-        System.out.println("Query 5 Results");
-        displayResults.displayThree(sqlQueries.addDriver("jamz","909-999-8888"));
-
+    		System.out.println("Enter Driver Name: ");
+		String driverName = scanner.nextLine();
+		
+		System.out.println("Enter Telephone Number: ");
+		String telephoneNum = scanner.nextLine();
+    	
+        System.out.println("*** Query 5 Results ***");
+        displayResults.displayThree(sqlQueries.addDriver(driverName, telephoneNum));
+        System.out.println();
+        //<name>, <telephone>
     }
+    
     private void queryNine() throws SQLException {
         //query 6
-        System.out.println("Query 6 Results");
-        displayResults.displayThree((sqlQueries.addBus("Bus9999","Tesla","2020")));
-
+    		System.out.println("Enter Bus Number: ");
+		String busID = scanner.nextLine();
+		
+		System.out.println("Enter Bus Model: ");
+		String model = scanner.nextLine();
+		
+		System.out.println("Enter Bus Year: ");
+		String year = scanner.nextLine();
+    	
+        System.out.println("*** Query 6 Results ***");
+        displayResults.displayThree((sqlQueries.addBus(busID, model, year)));
+        System.out.println();
+        //<busID>, <model>, <year>
     }
+    
     private void queryTen() throws SQLException {
         //query 7
-        System.out.println("Query 7 Results");
-        displayResults.displayTwo(sqlQueries.deleteBus("Bus999"));
-
+    		System.out.println("Enter Bus Number: ");
+		String busID = scanner.nextLine();
+    	
+        System.out.println("*** Query 7 Results ***");
+        displayResults.displayTwo(sqlQueries.deleteBus(busID));
+        System.out.println();
+        //<busID>
     }
+    
     private void queryEleven() throws SQLException {
         //query 8
-        displayResults.displayThree(sqlQueries.addActualTrip("Trip2","1-2-2001","TUE 10:00AM","Stop1","TUE 2:45PM","1","1", "1", "1"));
-
+    		System.out.println("Enter Trip Number: ");
+		String tripNum = scanner.nextLine();
+		
+		System.out.println("Enter Date: ");
+		String date = scanner.nextLine();
+		
+		System.out.println("Enter Scheduled Start Time: ");
+		String startTime = scanner.nextLine();
+		
+		System.out.println("Enter Stop Number: ");
+		String stopNum = scanner.nextLine();
+		
+		System.out.println("Enter Scheduled Arrival Time: ");
+		String arrivalTime = scanner.nextLine();
+		
+		System.out.println("Enter Actual Start Time: ");
+		String actualStartTime = scanner.nextLine();
+		
+		System.out.println("Enter Actual Arrival Time: ");
+		String actualArrivalTime = scanner.nextLine();
+		
+		System.out.println("Enter Number Of Passengers In: ");
+		String passengersIn = scanner.nextLine();
+		
+		System.out.println("Enter Number Of Passengers Out: ");
+		String passengersOut = scanner.nextLine();
+    	
+    		System.out.println("*** Query 8 Results ***");
+        displayResults.displayThree(sqlQueries.addActualTrip(tripNum, date, startTime, stopNum, arrivalTime, actualStartTime, actualArrivalTime, passengersIn, passengersOut));
+        System.out.println();
+        //Trip2, 1-2-2001, TUE 10:00AM, Stop2, TUE 2:45PM, TUE 10:00AM, TUE 2:30PM, 15, 7
     }
 }

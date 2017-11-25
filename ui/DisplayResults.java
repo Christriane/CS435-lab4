@@ -62,7 +62,7 @@ public class DisplayResults {
     public void displaySix(ResultSet resultSet) throws SQLException{
         if (resultSet.next()) {
             while (resultSet.next()) {
-                System.out.print(resultSet.getString("DriverName")+" ");
+                System.out.print(resultSet.getString("TripNumber")+" ");
                 System.out.print(resultSet.getString("Date")+" ");
                 System.out.println();
             }
