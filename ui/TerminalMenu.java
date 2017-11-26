@@ -292,6 +292,6 @@ public class TerminalMenu {
     		System.out.println("*** Query 8 Results ***");
         displayResults.displayThree(sqlQueries.addActualTrip(tripNum, date, startTime, stopNum, arrivalTime, actualStartTime, actualArrivalTime, passengersIn, passengersOut));
         System.out.println();
-        //Trip2, 1-2-2001, TUE 10:00AM, Stop2, TUE 2:45PM, TUE 10:00AM, TUE 2:30PM, 15, 7
+        //Trip2, 1-2-2001, TUE 10:00AM, Stop1, TUE 2:45PM, 1, 1, 1, 1
     }
 }

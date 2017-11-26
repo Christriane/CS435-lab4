@@ -317,7 +317,7 @@ public class SqlQueries {
         int resultSet = completeQuery.executeUpdate();
         
         if(resultSet > 0) {
-	        sql = "SELECT * FROM Bus";
+	        sql = "SELECT * FROM ActualTripStopInfo";
 	        completeQuery = connection.prepareStatement(sql);
 	        ResultSet rs = completeQuery.executeQuery();
 	        
