@@ -132,29 +132,40 @@ public class TerminalMenu {
     }
     
     private void queryThree() throws SQLException {
-        //query 2.b
-    		System.out.println("Enter Trip Number: ");
-		String tripNum = scanner.nextLine();
 
-		System.out.println("Enter Date: ");
-		String date = scanner.nextLine();
+        while(true) {
+            //query 2.b
+            System.out.println("Enter Trip Number: ");
+            String tripNum = scanner.nextLine();
 
-		System.out.println("Enter Scheduled Start Time: ");
-		String startTime = scanner.nextLine();
-		
-		System.out.println("Enter Scheduled Arrival Time: ");
-		String arrivalTime = scanner.nextLine();
-		
-		System.out.println("Enter Driver Name: ");
-		String driverName = scanner.nextLine();
-		
-		System.out.println("Enter BusID: ");
-		String busID = scanner.nextLine();
-    	
-		System.out.println("*** Query 2b Results ***");
-        displayResults.displayThree(sqlQueries.addTrip(tripNum, date, startTime, arrivalTime, driverName, busID));
-        System.out.println();
-        //Trip1, 11-21-2017, MON 10:55AM, MON 12:00PM, Driver1, Bus2
+            System.out.println("Enter Date: ");
+            String date = scanner.nextLine();
+
+            System.out.println("Enter Scheduled Start Time: ");
+            String startTime = scanner.nextLine();
+
+            System.out.println("Enter Scheduled Arrival Time: ");
+            String arrivalTime = scanner.nextLine();
+
+            System.out.println("Enter Driver Name: ");
+            String driverName = scanner.nextLine();
+
+            System.out.println("Enter BusID: ");
+            String busID = scanner.nextLine();
+
+            System.out.println("*** Query 2b Results ***");
+            displayResults.displayThree(sqlQueries.addTrip(tripNum, date, startTime, arrivalTime, driverName, busID));
+            System.out.println();
+            //Trip1, 11-21-2017, MON 10:55AM, MON 12:00PM, Driver1, Bus2
+
+            System.out.println("Add another trip? (Y/N)");
+            choice = scanner.nextLine();
+
+            if (choice.equalsIgnoreCase("n")){
+                System.out.println();
+                break;
+            }
+        }
     }
     
     private void queryFour() throws SQLException {
